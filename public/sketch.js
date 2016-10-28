@@ -1,36 +1,62 @@
 
 // The midi notes of a scale
-var notes = [ 60, 62, 64, 65, 67, 69, 71, 73];
+var notes = [ 53, 71, 50, 48, 76, 73, 69, 72];
 
 // For automatically playing the song
 var index = 0;
-// var original = [{ note: 4, duration: 400, display: "D" },
+//var original = [
+// { note: 4, duration: 400, display: "D" },
 //   { note: 0, duration: 200, display: "G" },
-//   { note: 1, duration: 200, display: "A" },
-//   { note: 2, duration: 200, display: "B" },
+  // { note: 1, duration: 200, display: "A" },
+  // { note: 2, duration: 200, display: "B" }]
 //   { note: 3, duration: 200, display: "C" },
 //   { note: 4, duration: 400, display: "D" },
 //   { note: 0, duration: 400, display: "G" },
 //   { note: 0, duration: 400, display: "G" }]
 
+
+// Math.floor(Math.random() * (7 - 0 + 1)) + 0;
 // notes index correspond to: anger, fear, sadness, disgust, surprise, anticipation, trust, joy
-var emotions = [
-  { note: 0, duration: 400, display: "D" },
-  { note: 1, duration: 400, display: "G" },
-  { note: 2, duration: 600, display: "A" },
-  { note: 3, duration: 400, display: "B" },
-  { note: 4, duration: 400, display: "C" },
-  { note: 5, duration: 400, display: "D" },
-  { note: 6, duration: 400, display: "G" },
-  { note: 7, duration: 600, display: "G" },
-  { note: 6, duration: 400, display: "D" },
-  { note: 5, duration: 400, display: "G" },
-  { note: 4, duration: 600, display: "A" },
-  { note: 3, duration: 400, display: "B" },
-  { note: 2, duration: 400, display: "C" },
-  { note: 1, duration: 400, display: "D" },
-  { note: 0, duration: 400, display: "G" }
-];
+var emotions = [];
+for (var i =0; i < 40; i++){
+  emotions.push({ note: Math.floor(Math.random() * (7 - 0 + 1)) + 0, duration: 500, display: "D" });
+
+}
+//   { note: 1, duration: 400, display: "D" },
+//   { note: 2, duration: 600, display: "D" },
+//   { note: 3, duration: 400, display: "D" },
+//   { note: 4, duration: 400, display: "D" },
+//   { note: 5, duration: 400, display: "D" },
+//   { note: 6, duration: 400, display: "D" },
+//   { note: 7, duration: 600, display: "G" },
+//   { note: 6, duration: 400, display: "D" },
+//   { note: 5, duration: 400, display: "G" },
+//   { note: 4, duration: 600, display: "A" },
+//   { note: 3, duration: 400, display: "B" },
+//   { note: 2, duration: 400, display: "C" },
+//   { note: 1, duration: 400, display: "D" },
+//   { note: 0, duration: 400, display: "G" },
+//   { note: 0, duration: 400, display: "D" },
+//   { note: 1, duration: 400, display: "G" },
+//   { note: 2, duration: 600, display: "A" },
+//   { note: 3, duration: 400, display: "B" },
+//   { note: 4, duration: 400, display: "C" },
+//   { note: 5, duration: 400, display: "D" },
+//   { note: 6, duration: 400, display: "G" },
+//   { note: 7, duration: 600, display: "G" },
+//   { note: 6, duration: 400, display: "D" },
+//   { note: 5, duration: 400, display: "G" },
+//   { note: 4, duration: 600, display: "A" },
+//   { note: 3, duration: 400, display: "B" },
+//   { note: 2, duration: 400, display: "C" },
+//   { note: 1, duration: 400, display: "D" },
+//   { note: 0, duration: 400, display: "G" },
+//   { note: 4, duration: 600, display: "A" },
+//   { note: 3, duration: 400, display: "B" },
+//   { note: 2, duration: 400, display: "C" },
+//   { note: 1, duration: 400, display: "D" },
+//   { note: 0, duration: 400, display: "G" }
+// ];
 
 var song = emotions;
 var trigger = 0;
@@ -39,7 +65,7 @@ var osc;
 
 function setup() {
 
-  createCanvas(720, 400);
+  createCanvas(1200, 700);
   var div = createDiv("Click to play notes or ")
   div.id("instructions");
   var button = createA("#","play song automatically.");
