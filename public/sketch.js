@@ -1,23 +1,44 @@
+
 // The midi notes of a scale
-var notes = [ 60, 62, 64, 65, 67, 69, 71];
+var notes = [ 60, 62, 64, 65, 67, 69, 71, 73];
 
 // For automatically playing the song
 var index = 0;
-var song = [
-  { note: 4, duration: 400, display: "D" },
-  { note: 0, duration: 200, display: "G" },
-  { note: 1, duration: 200, display: "A" },
-  { note: 2, duration: 200, display: "B" },
-  { note: 3, duration: 200, display: "C" },
-  { note: 4, duration: 400, display: "D" },
-  { note: 0, duration: 400, display: "G" },
+// var original = [{ note: 4, duration: 400, display: "D" },
+//   { note: 0, duration: 200, display: "G" },
+//   { note: 1, duration: 200, display: "A" },
+//   { note: 2, duration: 200, display: "B" },
+//   { note: 3, duration: 200, display: "C" },
+//   { note: 4, duration: 400, display: "D" },
+//   { note: 0, duration: 400, display: "G" },
+//   { note: 0, duration: 400, display: "G" }]
+
+// notes index correspond to: anger, fear, sadness, disgust, surprise, anticipation, trust, joy
+var emotions = [
+  { note: 0, duration: 400, display: "D" },
+  { note: 1, duration: 400, display: "G" },
+  { note: 2, duration: 600, display: "A" },
+  { note: 3, duration: 400, display: "B" },
+  { note: 4, duration: 400, display: "C" },
+  { note: 5, duration: 400, display: "D" },
+  { note: 6, duration: 400, display: "G" },
+  { note: 7, duration: 600, display: "G" },
+  { note: 6, duration: 400, display: "D" },
+  { note: 5, duration: 400, display: "G" },
+  { note: 4, duration: 600, display: "A" },
+  { note: 3, duration: 400, display: "B" },
+  { note: 2, duration: 400, display: "C" },
+  { note: 1, duration: 400, display: "D" },
   { note: 0, duration: 400, display: "G" }
 ];
+
+var song = emotions;
 var trigger = 0;
 var autoplay = false;
 var osc;
 
 function setup() {
+
   createCanvas(720, 400);
   var div = createDiv("Click to play notes or ")
   div.id("instructions");
@@ -74,20 +95,54 @@ function draw() {
     var x = i * w;
     // If the mouse is over the key
     if (mouseX > x && mouseX < x + w && mouseY < height) {
-      // If we're clicking
+      // If we're clicking this is the color that displays 
       if (mouseIsPressed) {
-        fill(100,255,200);
+         if (i === 0) {
+        fill(201,0,20);
+      } else if (i === 1){
+        fill(46,149,20);
+      } else if (i === 2){
+        fill(92,86,252);
+      } else if (i === 3){
+        fill(246,87,253);
+      } else if (i === 4){
+        fill(111,191,253);
+      } else if (i === 5){
+        fill(244,123,31);
+      } else if (i === 6){
+        fill(115,254,93);
+      } else {
+        fill(252,254,96);
+      }
+         
+
       // Or just rolling over
       } else {
-        fill(127);
+        fill(255); //white when mouse hover 
       }
     } else {
-      fill(200);
+      fill(200); // light gray by default 
     }
 
     // Or if we're playing the song, let's highlight it too
     if (autoplay && i === song[index-1].note) {
-      fill(100,255,200);
+      if (i === 0) {
+        fill(201,0,20);
+      } else if (i === 1){
+        fill(46,149,20);
+      } else if (i === 2){
+        fill(92,86,252);
+      } else if (i === 3){
+        fill(246,87,253);
+      } else if (i === 4){
+        fill(111,191,253);
+      } else if (i === 5){
+        fill(244,123,31);
+      } else if (i === 6){
+        fill(115,254,93);
+      } else {
+        fill(252,254,96);
+      }
     }
 
     // Draw the key
